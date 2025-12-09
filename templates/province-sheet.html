@@ -1,48 +1,57 @@
-<form class="flexcol">
-  <header class="sheet-header flexrow">
-    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
-    <h3>Province</h3>
+<form class="flexcol province-kingdom province-sheet">
+  <header class="sheet-header pk-province-header">
+    <h1 class="charname pk-province-title">
+      <input name="name" type="text" value="{{actor.name}}"/>
+    </h1>
+    <h3 class="pk-province-subtitle">Province</h3>
   </header>
 
-  <section class="sheet-body">
-    <h2>Province Stats</h2>
-    <div class="grid grid-2col">
-      <div class="form-group">
+  <section class="sheet-body pk-province-body">
+    {{!-- Image box: 2/3 width, 4:3 ratio, centered --}}
+    <div class="pk-image-frame">
+      <img src="{{actor.img}}" data-edit="img" alt="{{actor.name}}" />
+    </div>
+
+    <h2 class="pk-section-title">Province Stats</h2>
+    <div class="grid grid-2col pk-stats-grid">
+      <div class="form-group pk-stat">
         <label>Lore</label>
-        <input type="number" data-pk-field="lore" value="{{pk.lore}}"/>
+        <div class="pk-stat-value">{{pk.lore}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Regent Power</label>
-        <input type="number" data-pk-field="regentPower" value="{{pk.regentPower}}"/>
+        <div class="pk-stat-value">{{pk.regentPower}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Influence</label>
-        <input type="number" data-pk-field="influence" value="{{pk.influence}}"/>
+        <div class="pk-stat-value">{{pk.influence}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Faith</label>
-        <input type="number" data-pk-field="faith" value="{{pk.faith}}"/>
+        <div class="pk-stat-value">{{pk.faith}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Arcana</label>
-        <input type="number" data-pk-field="arcana" value="{{pk.arcana}}"/>
+        <div class="pk-stat-value">{{pk.arcana}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Commerce</label>
-        <input type="number" data-pk-field="commerce" value="{{pk.commerce}}"/>
+        <div class="pk-stat-value">{{pk.commerce}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Timber</label>
-        <input type="number" data-pk-field="timber" value="{{pk.timber}}"/>
+        <div class="pk-stat-value">{{pk.timber}}</div>
       </div>
-      <div class="form-group">
+      <div class="form-group pk-stat">
         <label>Iron</label>
-        <input type="number" data-pk-field="iron" value="{{pk.iron}}"/>
+        <div class="pk-stat-value">{{pk.iron}}</div>
       </div>
     </div>
 
     <hr/>
-    <h2>Owner Kingdom</h2>
+
+    <h2 class="pk-section-title">Owner Kingdom</h2>
+    <div class="form-group">
       <select data-pk-owner-kingdom>
         <option value="">— None —</option>
         {{#each pk.kingdomOptions}}
@@ -51,19 +60,30 @@
           </option>
         {{/each}}
       </select>
+    </div>
+
     <hr/>
-    <h2>Improvements</h2>
-    <ul>
-      {{#each pk.improvements}}
-      <li>{{this.name}}</li>
-      {{/each}}
+
+    <h2 class="pk-section-title">Improvements</h2>
+    <ul class="pk-list">
+      {{#if pk.improvements.length}}
+        {{#each pk.improvements}}
+        <li>{{this.name}}</li>
+        {{/each}}
+      {{else}}
+        <li class="pk-list-empty">No improvements built.</li>
+      {{/if}}
     </ul>
 
-    <h2>War Units Stationed Here</h2>
-    <ul>
-      {{#each pk.warUnits}}
-      <li>{{this.name}}</li>
-      {{/each}}
+    <h2 class="pk-section-title">War Units Stationed Here</h2>
+    <ul class="pk-list">
+      {{#if pk.warUnits.length}}
+        {{#each pk.warUnits}}
+        <li>{{this.name}}</li>
+        {{/each}}
+      {{else}}
+        <li class="pk-list-empty">No war units stationed here.</li>
+      {{/if}}
     </ul>
   </section>
 </form>
