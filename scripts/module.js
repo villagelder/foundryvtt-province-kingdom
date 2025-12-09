@@ -107,6 +107,16 @@ class ProvinceSheet extends ActorSheet {
       a.getFlag(PK_ID, "stationedProvinceId") === this.actor.id
     );
 
+    const kingdoms = game.actors.filter(a =>
+      a.type === "npc" && a.getFlag(PK_ID, "pkType") === "kingdom"
+    );
+
+    data.pk.kingdomOptions = kingdoms.map(k => ({
+      id: k.id,
+      name: k.name,
+      selected: k.id === data.pk.ownerKingdomId
+    }));
+
     return data;
   }
 

@@ -43,13 +43,14 @@
 
     <hr/>
     <h2>Owner Kingdom</h2>
-    <select data-pk-owner-kingdom>
-      <option value="">— None —</option>
-      {{#each (actors "npc")}}
-        {{!-- this helper may need tweaking later; we can replace with pk.kingdomOptions --}}
-      {{/each}}
-    </select>
-
+      <select data-pk-owner-kingdom>
+        <option value="">— None —</option>
+        {{#each pk.kingdomOptions}}
+          <option value="{{this.id}}" {{#if this.selected}}selected{{/if}}>
+            {{this.name}}
+          </option>
+        {{/each}}
+      </select>
     <hr/>
     <h2>Improvements</h2>
     <ul>
