@@ -1,0 +1,46 @@
+<form class="flexcol">
+  <header class="sheet-header flexrow">
+    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+    <h3>War Unit</h3>
+  </header>
+
+  <section class="sheet-body">
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Number of Troops</label>
+        <input type="number" data-pk-field="troops" value="{{pk.troops}}"/>
+      </div>
+      <div class="form-group">
+        <label>Hit Points</label>
+        <input type="number" data-pk-field="hp" value="{{pk.hp}}"/>
+      </div>
+      <div class="form-group">
+        <label>Armor Class</label>
+        <input type="number" data-pk-field="ac" value="{{pk.ac}}"/>
+      </div>
+      <div class="form-group">
+        <label>Speed</label>
+        <input type="number" data-pk-field="speed" value="{{pk.speed}}"/>
+      </div>
+      <div class="form-group">
+        <label>Attack Bonus</label>
+        <input type="number" data-pk-field="attackBonus" value="{{pk.attackBonus}}"/>
+      </div>
+      <div class="form-group">
+        <label>Damage Dice (text)</label>
+        <input type="text" data-pk-field="damageDice" value="{{pk.damageDice}}"/>
+      </div>
+    </div>
+
+    <hr/>
+    <h2>Stationed Province</h2>
+    <select data-pk-stationed-province>
+      <option value="">— None —</option>
+      {{!-- later: populate with provinces --}}
+    </select>
+
+    <hr/>
+    <h2>Description</h2>
+    {{{editor content=actor.system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
+  </section>
+</form>

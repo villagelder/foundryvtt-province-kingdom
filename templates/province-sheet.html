@@ -1,0 +1,68 @@
+<form class="flexcol">
+  <header class="sheet-header flexrow">
+    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+    <h3>Province</h3>
+  </header>
+
+  <section class="sheet-body">
+    <h2>Province Stats</h2>
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Lore</label>
+        <input type="number" data-pk-field="lore" value="{{pk.lore}}"/>
+      </div>
+      <div class="form-group">
+        <label>Regent Power</label>
+        <input type="number" data-pk-field="regentPower" value="{{pk.regentPower}}"/>
+      </div>
+      <div class="form-group">
+        <label>Influence</label>
+        <input type="number" data-pk-field="influence" value="{{pk.influence}}"/>
+      </div>
+      <div class="form-group">
+        <label>Faith</label>
+        <input type="number" data-pk-field="faith" value="{{pk.faith}}"/>
+      </div>
+      <div class="form-group">
+        <label>Arcana</label>
+        <input type="number" data-pk-field="arcana" value="{{pk.arcana}}"/>
+      </div>
+      <div class="form-group">
+        <label>Commerce</label>
+        <input type="number" data-pk-field="commerce" value="{{pk.commerce}}"/>
+      </div>
+      <div class="form-group">
+        <label>Timber</label>
+        <input type="number" data-pk-field="timber" value="{{pk.timber}}"/>
+      </div>
+      <div class="form-group">
+        <label>Iron</label>
+        <input type="number" data-pk-field="iron" value="{{pk.iron}}"/>
+      </div>
+    </div>
+
+    <hr/>
+    <h2>Owner Kingdom</h2>
+    <select data-pk-owner-kingdom>
+      <option value="">— None —</option>
+      {{#each (actors "npc")}}
+        {{!-- this helper may need tweaking later; we can replace with pk.kingdomOptions --}}
+      {{/each}}
+    </select>
+
+    <hr/>
+    <h2>Improvements</h2>
+    <ul>
+      {{#each pk.improvements}}
+      <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
+
+    <h2>War Units Stationed Here</h2>
+    <ul>
+      {{#each pk.warUnits}}
+      <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
+  </section>
+</form>

@@ -1,0 +1,64 @@
+<form class="flexcol">
+  <header class="sheet-header flexrow">
+    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+    <h3>Kingdom</h3>
+  </header>
+
+  <section class="sheet-body">
+    <h2>Kingdom Stats (aggregated from Provinces)</h2>
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Lore</label>
+        <input type="number" data-pk-field="lore" value="{{pk.lore}}"/>
+      </div>
+      <div class="form-group">
+        <label>Regent Power</label>
+        <input type="number" data-pk-field="regentPower" value="{{pk.regentPower}}"/>
+      </div>
+      <div class="form-group">
+        <label>Influence</label>
+        <input type="number" data-pk-field="influence" value="{{pk.influence}}"/>
+      </div>
+      <div class="form-group">
+        <label>Faith</label>
+        <input type="number" data-pk-field="faith" value="{{pk.faith}}"/>
+      </div>
+      <div class="form-group">
+        <label>Arcana</label>
+        <input type="number" data-pk-field="arcana" value="{{pk.arcana}}"/>
+      </div>
+      <div class="form-group">
+        <label>Commerce</label>
+        <input type="number" data-pk-field="commerce" value="{{pk.commerce}}"/>
+      </div>
+      <div class="form-group">
+        <label>Timber</label>
+        <input type="number" data-pk-field="timber" value="{{pk.timber}}"/>
+      </div>
+      <div class="form-group">
+        <label>Iron</label>
+        <input type="number" data-pk-field="iron" value="{{pk.iron}}"/>
+      </div>
+    </div>
+
+    <hr/>
+    <h2>Controlled Provinces</h2>
+    <p>Aggregated stats:</p>
+    <ul>
+      <li>Lore: {{pk.aggregate.lore}}</li>
+      <li>Regent Power: {{pk.aggregate.regentPower}}</li>
+      <li>Influence: {{pk.aggregate.influence}}</li>
+      <li>Faith: {{pk.aggregate.faith}}</li>
+      <li>Arcana: {{pk.aggregate.arcana}}</li>
+      <li>Commerce: {{pk.aggregate.commerce}}</li>
+      <li>Timber: {{pk.aggregate.timber}}</li>
+      <li>Iron: {{pk.aggregate.iron}}</li>
+    </ul>
+
+    <ul>
+      {{#each pk.provinces}}
+      <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
+  </section>
+</form>

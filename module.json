@@ -1,0 +1,46 @@
+{
+  "id": "province-kingdom",
+  "title": "Province & Kingdom Management",
+  "description": "Kingdom, Province, War Unit, and Improvement entities for domain-level play in D&D 5e (2024).",
+  "version": "0.1.0",
+  "type": "module",
+  "authors": [
+    {
+      "name": "Your Name",
+      "url": "https://github.com/YOUR_GITHUB_USER/foundryvtt-province-kingdom"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "3",
+          "verified": "3"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/module.js"
+  ],
+  "styles": [
+    "styles/province-kingdom.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "url": "https://github.com/villagelder/foundryvtt-province-kingdom",
+  "manifest": "https://raw.githubusercontent.com/villagelder/foundryvtt-province-kingdom/main/module.json",
+  "download": "https://github.com/villagelder/foundryvtt-province-kingdom/archive/refs/heads/main.zip"
+}
