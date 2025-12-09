@@ -148,25 +148,43 @@ class WarUnitSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [PK_ID, "sheet", "actor", "warunit"],
       template: `modules/${PK_ID}/templates/warunit-sheet.html`,
-      width: 650,
-      height: 700
+      width: 600,
+      height: 600
     });
   }
 
   getData(options = {}) {
     const data = super.getData(options);
+
+    // Mark as war unit type so other sheets/logic can find it
+    if (this.actor.getFlag(PK_ID, "pkType") !== "warUnit") {
+      this.actor.setFlag(PK_ID, "pkType", "warUnit");
+    }
+
     const f = (key, def = 0) => this.actor.getFlag(PK_ID, key) ?? def;
+    const s = (key, def = "") => this.actor.getFlag(PK_ID, key) ?? def;
 
     data.pk = {
       type: "warUnit",
-      troops:        f("troops"),
-      attackBonus:   f("attackBonus"),
-      damageDice:    this.actor.getFlag(PK_ID, "damageDice") ?? "",
-      speed:         f("speed"),
-      hp:            f("hp"),
-      ac:            f("ac"),
+      troops:      f("troops"),
+      hp:          f("hp"),
+      ac:          f("ac"),
+      speed:       f("speed"),
+      attackBonus: f("attackBonus"),
+      damageDice:  s("damageDice"),
       stationedProvinceId: this.actor.getFlag(PK_ID, "stationedProvinceId") ?? null
     };
+
+    // Build province options dropdown: all NPCs flagged as provinces
+    const provinces = game.actors.filter(a =>
+      a.type === "npc" && a.getFlag(PK_ID, "pkType") === "province"
+    );
+
+    data.pk.provinceOptions = provinces.map(p => ({
+      id: p.id,
+      name: p.name,
+      selected: p.id === data.pk.stationedProvinceId
+    }));
 
     return data;
   }
@@ -179,7 +197,8 @@ class WarUnitSheet extends ActorSheet {
       const input = event.currentTarget;
       const field = input.dataset.pkField;
       let value = input.value;
-      if (["troops","attackBonus","speed","hp","ac"].includes(field)) {
+
+      if (["troops","hp","ac","speed","attackBonus"].includes(field)) {
         value = Number(value) || 0;
       }
       await this.actor.setFlag(PK_ID, field, value);
@@ -205,11 +224,16 @@ class ImprovementSheet extends ItemSheet {
 
   getData(options = {}) {
     const data = super.getData(options);
+
+    // Mark as improvement type
+    if (this.item.getFlag(PK_ID, "pkType") !== "improvement") {
+      this.item.setFlag(PK_ID, "pkType", "improvement");
+    }
+
     const f = (key, def = 0) => this.item.getFlag(PK_ID, key) ?? def;
 
     data.pk = {
       type: "improvement",
-      // bonuses/penalties to province stats
       bonus: {
         lore:        f("bonusLore"),
         regentPower: f("bonusRegentPower"),

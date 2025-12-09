@@ -1,46 +1,59 @@
-<form class="flexcol">
-  <header class="sheet-header flexrow">
-    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+<form class="flexcol province-kingdom warunit-sheet">
+  <header class="sheet-header">
+    <h1 class="charname">
+      <input name="name" type="text" value="{{actor.name}}" />
+    </h1>
     <h3>War Unit</h3>
   </header>
 
   <section class="sheet-body">
+    <h2>Unit Stats</h2>
     <div class="grid grid-2col">
       <div class="form-group">
         <label>Number of Troops</label>
-        <input type="number" data-pk-field="troops" value="{{pk.troops}}"/>
+        <input type="number" data-pk-field="troops" value="{{pk.troops}}" />
       </div>
       <div class="form-group">
         <label>Hit Points</label>
-        <input type="number" data-pk-field="hp" value="{{pk.hp}}"/>
+        <input type="number" data-pk-field="hp" value="{{pk.hp}}" />
       </div>
       <div class="form-group">
         <label>Armor Class</label>
-        <input type="number" data-pk-field="ac" value="{{pk.ac}}"/>
+        <input type="number" data-pk-field="ac" value="{{pk.ac}}" />
       </div>
       <div class="form-group">
         <label>Speed</label>
-        <input type="number" data-pk-field="speed" value="{{pk.speed}}"/>
+        <input type="number" data-pk-field="speed" value="{{pk.speed}}" />
       </div>
       <div class="form-group">
         <label>Attack Bonus</label>
-        <input type="number" data-pk-field="attackBonus" value="{{pk.attackBonus}}"/>
+        <input type="number" data-pk-field="attackBonus" value="{{pk.attackBonus}}" />
       </div>
       <div class="form-group">
-        <label>Damage Dice (text)</label>
-        <input type="text" data-pk-field="damageDice" value="{{pk.damageDice}}"/>
+        <label>Damage Dice</label>
+        <input type="text" data-pk-field="damageDice" value="{{pk.damageDice}}" />
       </div>
     </div>
 
-    <hr/>
-    <h2>Stationed Province</h2>
-    <select data-pk-stationed-province>
-      <option value="">— None —</option>
-      {{!-- later: populate with provinces --}}
-    </select>
+    <hr />
 
-    <hr/>
-    <h2>Description</h2>
-    {{{editor content=actor.system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
+    <h2>Stationed Province</h2>
+    <div class="form-group">
+      <select data-pk-stationed-province>
+        <option value="">— None —</option>
+        {{#each pk.provinceOptions}}
+          <option value="{{this.id}}" {{#if this.selected}}selected{{/if}}>
+            {{this.name}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+
+    <hr />
+
+    <h2>Notes</h2>
+    <textarea name="pk-notes" disabled style="width: 100%; height: 100px; opacity: 0.6;">
+Use the standard 5e NPC fields for detailed descriptions, traits, etc. This sheet is just for war-unit stats.
+    </textarea>
   </section>
 </form>

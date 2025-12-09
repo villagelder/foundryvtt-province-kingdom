@@ -1,32 +1,38 @@
-<form class="flexcol">
-  <header class="sheet-header flexrow">
-    <h1 class="itemname"><input name="name" type="text" value="{{item.name}}"/></h1>
+<form class="flexcol province-kingdom improvement-sheet">
+  <header class="sheet-header">
+    <h1 class="itemname">
+      <input name="name" type="text" value="{{item.name}}" />
+    </h1>
     <h3>Improvement</h3>
   </header>
 
   <section class="sheet-body">
     <h2>Bonuses</h2>
     <div class="grid grid-2col">
-      <div class="form-group"><label>Lore</label><input type="number" data-pk-field="bonusLore" value="{{pk.bonus.lore}}"/></div>
-      <div class="form-group"><label>Regent Power</label><input type="number" data-pk-field="bonusRegentPower" value="{{pk.bonus.regentPower}}"/></div>
-      <div class="form-group"><label>Influence</label><input type="number" data-pk-field="bonusInfluence" value="{{pk.bonus.influence}}"/></div>
-      <div class="form-group"><label>Faith</label><input type="number" data-pk-field="bonusFaith" value="{{pk.bonus.faith}}"/></div>
-      <div class="form-group"><label>Arcana</label><input type="number" data-pk-field="bonusArcana" value="{{pk.bonus.arcana}}"/></div>
-      <div class="form-group"><label>Commerce</label><input type="number" data-pk-field="bonusCommerce" value="{{pk.bonus.commerce}}"/></div>
-      <div class="form-group"><label>Timber</label><input type="number" data-pk-field="bonusTimber" value="{{pk.bonus.timber}}"/></div>
-      <div class="form-group"><label>Iron</label><input type="number" data-pk-field="bonusIron" value="{{pk.bonus.iron}}"/></div>
+      <div class="form-group"><label>Lore</label><input type="number" data-pk-field="bonusLore" value="{{pk.bonus.lore}}" /></div>
+      <div class="form-group"><label>Regent Power</label><input type="number" data-pk-field="bonusRegentPower" value="{{pk.bonus.regentPower}}" /></div>
+      <div class="form-group"><label>Influence</label><input type="number" data-pk-field="bonusInfluence" value="{{pk.bonus.influence}}" /></div>
+      <div class="form-group"><label>Faith</label><input type="number" data-pk-field="bonusFaith" value="{{pk.bonus.faith}}" /></div>
+      <div class="form-group"><label>Arcana</label><input type="number" data-pk-field="bonusArcana" value="{{pk.bonus.arcana}}" /></div>
+      <div class="form-group"><label>Commerce</label><input type="number" data-pk-field="bonusCommerce" value="{{pk.bonus.commerce}}" /></div>
+      <div class="form-group"><label>Timber</label><input type="number" data-pk-field="bonusTimber" value="{{pk.bonus.timber}}" /></div>
+      <div class="form-group"><label>Iron</label><input type="number" data-pk-field="bonusIron" value="{{pk.bonus.iron}}" /></div>
     </div>
 
-    <hr/>
+    <hr />
+
     <h2>Costs</h2>
     <div class="grid grid-2col">
-      <div class="form-group"><label>Gold Cost</label><input type="number" data-pk-field="costGold" value="{{pk.cost.gold}}"/></div>
-      <div class="form-group"><label>Regent Power Cost</label><input type="number" data-pk-field="costRegentPower" value="{{pk.cost.regentPower}}"/></div>
-      <div class="form-group"><label>Build Time (Domain Turns)</label><input type="number" data-pk-field="buildTime" value="{{pk.buildTime}}"/></div>
+      <div class="form-group"><label>Gold Cost</label><input type="number" data-pk-field="costGold" value="{{pk.cost.gold}}" /></div>
+      <div class="form-group"><label>Regent Power Cost</label><input type="number" data-pk-field="costRegentPower" value="{{pk.cost.regentPower}}" /></div>
+      <div class="form-group"><label>Build Time (Domain Turns)</label><input type="number" data-pk-field="buildTime" value="{{pk.buildTime}}" /></div>
     </div>
 
-    <hr/>
+    <hr />
+
     <h2>Description</h2>
-    {{{editor content=item.system.description.value target="system.description.value" button=true owner=owner editable=editable}}
+    <textarea name="pk-description" disabled style="width: 100%; height: 100px; opacity: 0.6;">
+Use the base 5e item description field for narrative details. This sheet is just for domain bonuses and costs.
+    </textarea>
   </section>
 </form>
