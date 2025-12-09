@@ -82,3 +82,67 @@
   font-style: italic;
 }
 
+/* Improvement header layout */
+.pk-imp-header {
+  padding: 0.5rem 0.75rem;
+}
+
+.pk-imp-header-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pk-imp-image-frame {
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pk-imp-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pk-imp-title-block {
+  flex: 1;
+}
+
+.pk-imp-title-block h1.itemname {
+  margin: 0;
+}
+
+.pk-imp-title-block h1.itemname input {
+  width: 100%;
+}
+
+.pk-imp-subtitle {
+  margin: 0.2rem 0 0;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+/* Lore and Notes styling */
+.pk-lore-text,
+.pk-notes-text {
+  width: 100%;
+  resize: vertical;
+}
+
+.pk-lore-display {
+  min-height: 3em;
+  padding: 0.3rem 0.4rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+

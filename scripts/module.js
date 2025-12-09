@@ -218,7 +218,7 @@ class ImprovementSheet extends ItemSheet {
       classes: [PK_ID, "sheet", "item", "improvement"],
       template: `modules/${PK_ID}/templates/improvement-sheet.html`,
       width: 600,
-      height: 600
+      height: 650
     });
   }
 
@@ -231,11 +231,14 @@ class ImprovementSheet extends ItemSheet {
     }
 
     const f = (key, def = 0) => this.item.getFlag(PK_ID, key) ?? def;
+    const s = (key, def = "") => this.item.getFlag(PK_ID, key) ?? def;
 
     data.pk = {
       type: "improvement",
+      isGM: game.user.isGM,
+      loreText: s("loreText", ""),
       bonus: {
-        lore:        f("bonusLore"),
+        // Lore is now text only, so no numeric bonusLore
         regentPower: f("bonusRegentPower"),
         influence:   f("bonusInfluence"),
         faith:       f("bonusFaith"),
@@ -250,7 +253,8 @@ class ImprovementSheet extends ItemSheet {
         timber:      f("costTimber"),
         iron:        f("costIron")
       },
-      buildTime: f("buildTime") // in months
+      buildTime:   f("buildTime"),
+      playerNotes: s("playerNotes", "")
     };
 
     return data;
@@ -260,10 +264,31 @@ class ImprovementSheet extends ItemSheet {
     super.activateListeners(html);
     if (!this.isEditable) return;
 
-    html.find("input[data-pk-field]").on("change", async (event) => {
+    const numericFields = [
+      "bonusRegentPower",
+      "bonusInfluence",
+      "bonusFaith",
+      "bonusArcana",
+      "bonusCommerce",
+      "bonusTimber",
+      "bonusIron",
+      "costGold",
+      "costRegentPower",
+      "costTimber",
+      "costIron",
+      "buildTime"
+    ];
+
+    // Handles both inputs and textareas that use data-pk-field
+    html.find("input[data-pk-field], textarea[data-pk-field]").on("change", async (event) => {
       const input = event.currentTarget;
       const field = input.dataset.pkField;
-      const value = Number(input.value) || 0;
+      let value = input.value;
+
+      if (numericFields.includes(field)) {
+        value = Number(value) || 0;
+      }
+
       await this.item.setFlag(PK_ID, field, value);
     });
   }
