@@ -16,6 +16,10 @@ class KingdomSheet extends ActorSheet {
     // Kingdom-level stats stored in flags for now
     const f = (key, def = 0) => this.actor.getFlag(PK_ID, key) ?? def;
 
+      if (this.actor.getFlag(PK_ID, "pkType") !== "kingdom") {
+        this.actor.setFlag(PK_ID, "pkType", "kingdom");
+      }
+
     data.pk = {
       type: "kingdom",
       lore:         f("lore"),
