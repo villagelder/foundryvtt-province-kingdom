@@ -78,8 +78,8 @@ class ProvinceSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: [PK_ID, "sheet", "actor", "province"],
       template: `modules/${PK_ID}/templates/province-sheet.html`,
-      width: 750,
-      height: 750
+      width: 600,
+      height: 900
     });
   }
 

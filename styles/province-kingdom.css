@@ -4,3 +4,81 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.4rem 0.8rem;
 }
+
+/* Province header layout */
+.pk-province-header {
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.75rem 0.25rem;
+}
+
+.pk-province-title {
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  text-align: center;
+}
+
+.pk-province-title input {
+  text-align: center;
+}
+
+.pk-province-subtitle {
+  margin: 0;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+/* Image frame: ~2/3 width, 4:3 aspect ratio, centered */
+.pk-image-frame {
+  width: 66%;
+  margin: 0.5rem auto 1rem auto;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pk-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Section titles & stats */
+.pk-section-title {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.pk-stats-grid {
+  margin-bottom: 0.5rem;
+}
+
+.pk-stat label {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.pk-stat-value {
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  min-height: 1.6em;
+}
+
+/* Lists */
+.pk-list {
+  margin: 0.25rem 0 0.75rem 0;
+  padding-left: 1.2rem;
+}
+
+.pk-list-empty {
+  opacity: 0.7;
+  font-style: italic;
+}
+
