@@ -2,11 +2,11 @@
   "id": "province-kingdom",
   "title": "Province & Kingdom Management",
   "description": "Kingdom, Province, War Unit, and Improvement entities for domain-level play in D&D 5e (2024).",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "type": "module",
   "authors": [
     {
-      "name": "Your Name",
+      "name": "Villagelder",
       "url": "https://github.com/villagelder/foundryvtt-province-kingdom"
     }
   ],

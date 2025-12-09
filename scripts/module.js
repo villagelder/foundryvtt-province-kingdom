@@ -246,9 +246,11 @@ class ImprovementSheet extends ItemSheet {
       },
       cost: {
         gold:        f("costGold"),
-        regentPower: f("costRegentPower")
+        regentPower: f("costRegentPower"),
+        timber:      f("costTimber"),
+        iron:        f("costIron")
       },
-      buildTime: f("buildTime") // in domain turns
+      buildTime: f("buildTime") // in months
     };
 
     return data;
