@@ -243,6 +243,21 @@ class ImprovementSheet extends ItemSheet {
     const f = (key, def = 0) => this.item.getFlag(PK_ID, key) ?? def;
     const s = (key, def = "") => this.item.getFlag(PK_ID, key) ?? def;
 
+    const fmt = (n) => {
+      const num = Number(n) || 0;
+      return num > -1 ? `+${num}` : `${num}`;
+    };
+
+    const cost      = f("cost");
+    const buildTime = f("buildTime");
+    const bonusLaw        = f("bonusLaw");
+    const bonusChaos      = f("bonusChaos");
+    const bonusFaith      = f("bonusFaith");
+    const bonusArcana     = f("bonusArcana");
+    const bonusInfluence  = f("bonusInfluence");
+    const outputFood      = f("outputFood");
+    const outputGold      = f("outputGold");
+
     data.pk = {
       isGM: game.user.isGM,
 
@@ -263,6 +278,18 @@ class ImprovementSheet extends ItemSheet {
 
       cost: f("cost"),
       buildTime: f("buildTime"),
+
+      display: {
+        cost:       fmt(cost),
+        buildTime:  fmt(buildTime),
+        bonusLaw:       fmt(bonusLaw),
+        bonusChaos:     fmt(bonusChaos),
+        bonusFaith:     fmt(bonusFaith),
+        bonusArcana:    fmt(bonusArcana),
+        bonusInfluence: fmt(bonusInfluence),
+        outputFood:     fmt(outputFood),
+        outputGold:     fmt(outputGold)
+      },
 
       playerNotes: s("playerNotes")
     };

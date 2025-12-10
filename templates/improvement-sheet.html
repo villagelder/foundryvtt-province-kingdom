@@ -12,14 +12,14 @@
         <h3 class="pk-imp-subtitle">Improvement</h3>
 
         <div class="pk-imp-cost-row">
-          <div class="pk-static-field">
-            <label>Cost</label>
-            <div class="pk-static-value">{{pk.cost}}</div>
+          <div class="pk-inline-field">
+            <span class="pk-label">Cost:</span>
+            <span class="pk-value">{{pk.display.cost}}</span>
           </div>
 
-          <div class="pk-static-field">
-            <label>Build Time</label>
-            <div class="pk-static-value">{{pk.buildTime}} turns</div>
+          <div class="pk-inline-field">
+            <span class="pk-label">Build Time:</span>
+            <span class="pk-value">{{pk.display.buildTime}}</span>
           </div>
         </div>
       </div>
@@ -27,7 +27,6 @@
   </header>
 
   <section class="sheet-body">
-
     <h2 class="pk-section-title">Lore</h2>
     {{#if pk.isGM}}
       <textarea
@@ -49,30 +48,29 @@
 
     <h2 class="pk-section-title">Bonuses</h2>
     <div class="grid grid-2col pk-bonus-grid">
-
-      <div class="pk-static-field">
-        <label>Law</label>
-        <div class="pk-static-value">{{pk.bonus.law}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Law:</span>
+        <span class="pk-value">{{pk.display.bonusLaw}}</span>
       </div>
 
-      <div class="pk-static-field">
-        <label>Chaos</label>
-        <div class="pk-static-value">{{pk.bonus.chaos}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Chaos:</span>
+        <span class="pk-value">{{pk.display.bonusChaos}}</span>
       </div>
 
-      <div class="pk-static-field">
-        <label>Faith</label>
-        <div class="pk-static-value">{{pk.bonus.faith}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Faith:</span>
+        <span class="pk-value">{{pk.display.bonusFaith}}</span>
       </div>
 
-      <div class="pk-static-field">
-        <label>Arcana</label>
-        <div class="pk-static-value">{{pk.bonus.arcana}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Arcana:</span>
+        <span class="pk-value">{{pk.display.bonusArcana}}</span>
       </div>
 
-      <div class="pk-static-field pk-span-2">
-        <label>Influence</label>
-        <div class="pk-static-value">{{pk.bonus.influence}}</div>
+      <div class="pk-inline-field pk-span-2">
+        <span class="pk-label">Influence:</span>
+        <span class="pk-value">{{pk.display.bonusInfluence}}</span>
       </div>
     </div>
 
@@ -80,14 +78,14 @@
 
     <h2 class="pk-section-title">Output</h2>
     <div class="grid grid-2col">
-      <div class="pk-static-field">
-        <label>Food</label>
-        <div class="pk-static-value">{{pk.output.food}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Food:</span>
+        <span class="pk-value">{{pk.display.outputFood}}</span>
       </div>
 
-      <div class="pk-static-field">
-        <label>Gold</label>
-        <div class="pk-static-value">{{pk.output.gold}}</div>
+      <div class="pk-inline-field">
+        <span class="pk-label">Gold:</span>
+        <span class="pk-value">{{pk.display.outputGold}}</span>
       </div>
     </div>
 

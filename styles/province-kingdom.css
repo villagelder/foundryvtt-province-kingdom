@@ -149,18 +149,40 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.pk-imp-cost-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-}
-
 .pk-imp-cost-row .form-group {
   flex: 1 1 45%;
 }
 
 /* Influence bonus spans both columns */
+.pk-bonus-grid .pk-span-2 {
+  grid-column: 1 / -1;
+}
+
+.pk-imp-cost-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.pk-inline-field {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.pk-inline-field .pk-label {
+  font-weight: bold;
+}
+
+.pk-inline-field .pk-value {
+  min-width: 2.5em;
+  text-align: left;
+}
+
+/* Influence spans both columns in the bonuses grid */
 .pk-bonus-grid .pk-span-2 {
   grid-column: 1 / -1;
 }
