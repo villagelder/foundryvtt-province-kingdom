@@ -1,64 +1,141 @@
-<form class="flexcol">
-  <header class="sheet-header flexrow">
-    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
-    <h3>Kingdom</h3>
+<form class="flexcol province-kingdom improvement-sheet">
+  <header class="sheet-header pk-imp-header">
+    <div class="pk-imp-header-row">
+      <div class="pk-imp-image-frame">
+        <img class="pk-imp-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}" />
+      </div>
+      <div class="pk-imp-title-block">
+        <h1 class="itemname">
+          <input name="name" type="text" value="{{item.name}}" />
+        </h1>
+        <h3 class="pk-imp-subtitle">Improvement</h3>
+
+        <div class="pk-imp-cost-row">
+          <div class="form-group">
+            <label>Cost</label>
+            <input
+              type="number"
+              data-pk-field="cost"
+              value="{{pk.cost}}"
+              {{#unless pk.isGM}}disabled{{/unless}}
+            />
+          </div>
+          <div class="form-group">
+            <label>Build Time (Domain Turns)</label>
+            <input
+              type="number"
+              data-pk-field="buildTime"
+              value="{{pk.buildTime}}"
+              {{#unless pk.isGM}}disabled{{/unless}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <section class="sheet-body">
-    <h2>Kingdom Stats (aggregated from Provinces)</h2>
-    <div class="grid grid-2col">
+    <h2 class="pk-section-title">Lore</h2>
+    {{#if pk.isGM}}
+      <textarea
+        data-pk-field="loreText"
+        class="pk-lore-text"
+        rows="4"
+      >{{pk.loreText}}</textarea>
+    {{else}}
+      <div class="pk-lore-display">
+        {{#if pk.loreText}}
+          {{{pk.loreText}}}
+        {{else}}
+          <em>No lore has been recorded for this improvement yet.</em>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    <hr />
+
+    <h2 class="pk-section-title">Bonuses</h2>
+    <div class="grid grid-2col pk-bonus-grid">
       <div class="form-group">
-        <label>Lore</label>
-        <input type="number" data-pk-field="lore" value="{{pk.lore}}"/>
+        <label>Law</label>
+        <input
+          type="number"
+          data-pk-field="bonusLaw"
+          value="{{pk.bonus.law}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
       </div>
       <div class="form-group">
-        <label>Regent Power</label>
-        <input type="number" data-pk-field="regentPower" value="{{pk.regentPower}}"/>
+        <label>Chaos</label>
+        <input
+          type="number"
+          data-pk-field="bonusChaos"
+          value="{{pk.bonus.chaos}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
       </div>
-      <div class="form-group">
-        <label>Influence</label>
-        <input type="number" data-pk-field="influence" value="{{pk.influence}}"/>
-      </div>
+
       <div class="form-group">
         <label>Faith</label>
-        <input type="number" data-pk-field="faith" value="{{pk.faith}}"/>
+        <input
+          type="number"
+          data-pk-field="bonusFaith"
+          value="{{pk.bonus.faith}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
       </div>
       <div class="form-group">
         <label>Arcana</label>
-        <input type="number" data-pk-field="arcana" value="{{pk.arcana}}"/>
+        <input
+          type="number"
+          data-pk-field="bonusArcana"
+          value="{{pk.bonus.arcana}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
       </div>
-      <div class="form-group">
-        <label>Commerce</label>
-        <input type="number" data-pk-field="commerce" value="{{pk.commerce}}"/>
-      </div>
-      <div class="form-group">
-        <label>Timber</label>
-        <input type="number" data-pk-field="timber" value="{{pk.timber}}"/>
-      </div>
-      <div class="form-group">
-        <label>Iron</label>
-        <input type="number" data-pk-field="iron" value="{{pk.iron}}"/>
+
+      <div class="form-group pk-span-2">
+        <label>Influence</label>
+        <input
+          type="number"
+          data-pk-field="bonusInfluence"
+          value="{{pk.bonus.influence}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
       </div>
     </div>
 
-    <hr/>
-    <h2>Controlled Provinces</h2>
-    <p>Aggregated stats:</p>
-    <ul>
-      <li>Lore: {{pk.aggregate.lore}}</li>
-      <li>Regent Power: {{pk.aggregate.regentPower}}</li>
-      <li>Influence: {{pk.aggregate.influence}}</li>
-      <li>Faith: {{pk.aggregate.faith}}</li>
-      <li>Arcana: {{pk.aggregate.arcana}}</li>
-      <li>Commerce: {{pk.aggregate.commerce}}</li>
-      <li>Timber: {{pk.aggregate.timber}}</li>
-      <li>Iron: {{pk.aggregate.iron}}</li>
-    </ul>
+    <hr />
 
-    <ul>
-      {{#each pk.provinces}}
-      <li>{{this.name}}</li>
-      {{/each}}
-    </ul>
+    <h2 class="pk-section-title">Output</h2>
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Food</label>
+        <input
+          type="number"
+          data-pk-field="outputFood"
+          value="{{pk.output.food}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+      <div class="form-group">
+        <label>Gold</label>
+        <input
+          type="number"
+          data-pk-field="outputGold"
+          value="{{pk.output.gold}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+    </div>
+
+    <hr />
+
+    <h2 class="pk-section-title">Notes (Players & DM)</h2>
+    <textarea
+      data-pk-field="playerNotes"
+      class="pk-notes-text"
+      rows="5"
+    >{{pk.playerNotes}}</textarea>
   </section>
 </form>

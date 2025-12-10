@@ -9,6 +9,27 @@
           <input name="name" type="text" value="{{item.name}}" />
         </h1>
         <h3 class="pk-imp-subtitle">Improvement</h3>
+
+        <div class="pk-imp-cost-row">
+          <div class="form-group">
+            <label>Cost</label>
+            <input
+              type="number"
+              data-pk-field="cost"
+              value="{{pk.cost}}"
+              {{#unless pk.isGM}}disabled{{/unless}}
+            />
+          </div>
+          <div class="form-group">
+            <label>Build Time (Domain Turns)</label>
+            <input
+              type="number"
+              data-pk-field="buildTime"
+              value="{{pk.buildTime}}"
+              {{#unless pk.isGM}}disabled{{/unless}}
+            />
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -22,142 +43,3 @@
         rows="4"
       >{{pk.loreText}}</textarea>
     {{else}}
-      <div class="pk-lore-display">
-        {{#if pk.loreText}}
-          {{{pk.loreText}}}
-        {{else}}
-          <em>No lore has been recorded for this improvement yet.</em>
-        {{/if}}
-      </div>
-    {{/if}}
-
-    <hr />
-
-    <h2 class="pk-section-title">Bonuses</h2>
-    <div class="grid grid-2col">
-      <div class="form-group">
-        <label>Regent Power</label>
-        <input
-          type="number"
-          data-pk-field="bonusRegentPower"
-          value="{{pk.bonus.regentPower}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Influence</label>
-        <input
-          type="number"
-          data-pk-field="bonusInfluence"
-          value="{{pk.bonus.influence}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Faith</label>
-        <input
-          type="number"
-          data-pk-field="bonusFaith"
-          value="{{pk.bonus.faith}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Arcana</label>
-        <input
-          type="number"
-          data-pk-field="bonusArcana"
-          value="{{pk.bonus.arcana}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Commerce</label>
-        <input
-          type="number"
-          data-pk-field="bonusCommerce"
-          value="{{pk.bonus.commerce}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Timber</label>
-        <input
-          type="number"
-          data-pk-field="bonusTimber"
-          value="{{pk.bonus.timber}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Iron</label>
-        <input
-          type="number"
-          data-pk-field="bonusIron"
-          value="{{pk.bonus.iron}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-    </div>
-
-    <hr />
-
-    <h2 class="pk-section-title">Costs</h2>
-    <div class="grid grid-2col">
-      <div class="form-group">
-        <label>Gold Cost</label>
-        <input
-          type="number"
-          data-pk-field="costGold"
-          value="{{pk.cost.gold}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Regent Power Cost</label>
-        <input
-          type="number"
-          data-pk-field="costRegentPower"
-          value="{{pk.cost.regentPower}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Timber Cost</label>
-        <input
-          type="number"
-          data-pk-field="costTimber"
-          value="{{pk.cost.timber}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Iron Cost</label>
-        <input
-          type="number"
-          data-pk-field="costIron"
-          value="{{pk.cost.iron}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Build Time (Domain Turns)</label>
-        <input
-          type="number"
-          data-pk-field="buildTime"
-          value="{{pk.buildTime}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-    </div>
-
-    <hr />
-
-    <h2 class="pk-section-title">Notes (Players & DM)</h2>
-    <textarea
-      data-pk-field="playerNotes"
-      class="pk-notes-text"
-      rows="5"
-    >{{pk.playerNotes}}</textarea>
-  </section>
-</form>

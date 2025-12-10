@@ -149,4 +149,20 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.pk-imp-cost-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.pk-imp-cost-row .form-group {
+  flex: 1 1 45%;
+}
+
+/* Influence bonus spans both columns */
+.pk-bonus-grid .pk-span-2 {
+  grid-column: 1 / -1;
+}
+
 
