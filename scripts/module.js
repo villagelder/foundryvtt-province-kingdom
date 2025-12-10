@@ -228,14 +228,14 @@ class ImprovementSheet extends ItemSheet {
       classes: [PK_ID, "sheet", "item", "improvement"],
       template: `modules/${PK_ID}/templates/improvement-sheet.html`,
       width: 600,
-      height: 650,
+      height: 650
     });
   }
 
   getData(options = {}) {
     const data = super.getData(options);
 
-    // Ensure this item is tagged as an improvement
+    // Ensure it is tagged
     if (this.item.getFlag(PK_ID, "pkType") !== "improvement") {
       this.item.setFlag(PK_ID, "pkType", "improvement");
     }
@@ -244,27 +244,27 @@ class ImprovementSheet extends ItemSheet {
     const s = (key, def = "") => this.item.getFlag(PK_ID, key) ?? def;
 
     data.pk = {
-      type: "improvement",
       isGM: game.user.isGM,
-      loreText: s("loreText", ""),
+
+      loreText: s("loreText"),
 
       bonus: {
         law: f("bonusLaw"),
         chaos: f("bonusChaos"),
         faith: f("bonusFaith"),
         arcana: f("bonusArcana"),
-        influence: f("bonusInfluence"),
+        influence: f("bonusInfluence")
       },
 
       output: {
         food: f("outputFood"),
-        gold: f("outputGold"),
+        gold: f("outputGold")
       },
 
       cost: f("cost"),
       buildTime: f("buildTime"),
 
-      playerNotes: s("playerNotes", ""),
+      playerNotes: s("playerNotes")
     };
 
     return data;
@@ -272,33 +272,12 @@ class ImprovementSheet extends ItemSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    if (!this.isEditable) return;
 
-    const numericFields = [
-      "bonusLaw",
-      "bonusChaos",
-      "bonusFaith",
-      "bonusArcana",
-      "bonusInfluence",
-      "outputFood",
-      "outputGold",
-      "cost",
-      "buildTime",
-    ];
-
-    html
-      .find("input[data-pk-field], textarea[data-pk-field]")
-      .on("change", async (event) => {
-        const input = event.currentTarget;
-        const field = input.dataset.pkField;
-        let value = input.value;
-
-        if (numericFields.includes(field)) {
-          value = Number(value) || 0;
-        }
-
-        await this.item.setFlag(PK_ID, field, value);
-      });
+    // Notes and Lore remain editable
+    html.find("textarea[data-pk-field]").on("change", async (event) => {
+      const input = event.currentTarget;
+      await this.item.setFlag(PK_ID, input.dataset.pkField, input.value);
+    });
   }
 }
 

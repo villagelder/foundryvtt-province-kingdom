@@ -4,6 +4,7 @@
       <div class="pk-imp-image-frame">
         <img class="pk-imp-image" src="{{item.img}}" data-edit="img" alt="{{item.name}}" />
       </div>
+
       <div class="pk-imp-title-block">
         <h1 class="itemname">
           <input name="name" type="text" value="{{item.name}}" />
@@ -11,23 +12,14 @@
         <h3 class="pk-imp-subtitle">Improvement</h3>
 
         <div class="pk-imp-cost-row">
-          <div class="form-group">
+          <div class="pk-static-field">
             <label>Cost</label>
-            <input
-              type="number"
-              data-pk-field="cost"
-              value="{{pk.cost}}"
-              {{#unless pk.isGM}}disabled{{/unless}}
-            />
+            <div class="pk-static-value">{{pk.cost}}</div>
           </div>
-          <div class="form-group">
-            <label>Build Time (Domain Turns)</label>
-            <input
-              type="number"
-              data-pk-field="buildTime"
-              value="{{pk.buildTime}}"
-              {{#unless pk.isGM}}disabled{{/unless}}
-            />
+
+          <div class="pk-static-field">
+            <label>Build Time</label>
+            <div class="pk-static-value">{{pk.buildTime}} turns</div>
           </div>
         </div>
       </div>
@@ -35,6 +27,7 @@
   </header>
 
   <section class="sheet-body">
+
     <h2 class="pk-section-title">Lore</h2>
     {{#if pk.isGM}}
       <textarea
@@ -52,84 +45,53 @@
       </div>
     {{/if}}
 
-    <hr />
+    <hr/>
 
     <h2 class="pk-section-title">Bonuses</h2>
     <div class="grid grid-2col pk-bonus-grid">
-      <div class="form-group">
+
+      <div class="pk-static-field">
         <label>Law</label>
-        <input
-          type="number"
-          data-pk-field="bonusLaw"
-          value="{{pk.bonus.law}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.bonus.law}}</div>
       </div>
-      <div class="form-group">
+
+      <div class="pk-static-field">
         <label>Chaos</label>
-        <input
-          type="number"
-          data-pk-field="bonusChaos"
-          value="{{pk.bonus.chaos}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.bonus.chaos}}</div>
       </div>
 
-      <div class="form-group">
+      <div class="pk-static-field">
         <label>Faith</label>
-        <input
-          type="number"
-          data-pk-field="bonusFaith"
-          value="{{pk.bonus.faith}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
-      </div>
-      <div class="form-group">
-        <label>Arcana</label>
-        <input
-          type="number"
-          data-pk-field="bonusArcana"
-          value="{{pk.bonus.arcana}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.bonus.faith}}</div>
       </div>
 
-      <div class="form-group pk-span-2">
+      <div class="pk-static-field">
+        <label>Arcana</label>
+        <div class="pk-static-value">{{pk.bonus.arcana}}</div>
+      </div>
+
+      <div class="pk-static-field pk-span-2">
         <label>Influence</label>
-        <input
-          type="number"
-          data-pk-field="bonusInfluence"
-          value="{{pk.bonus.influence}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.bonus.influence}}</div>
       </div>
     </div>
 
-    <hr />
+    <hr/>
 
     <h2 class="pk-section-title">Output</h2>
     <div class="grid grid-2col">
-      <div class="form-group">
+      <div class="pk-static-field">
         <label>Food</label>
-        <input
-          type="number"
-          data-pk-field="outputFood"
-          value="{{pk.output.food}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.output.food}}</div>
       </div>
-      <div class="form-group">
+
+      <div class="pk-static-field">
         <label>Gold</label>
-        <input
-          type="number"
-          data-pk-field="outputGold"
-          value="{{pk.output.gold}}"
-          {{#unless pk.isGM}}disabled{{/unless}}
-        />
+        <div class="pk-static-value">{{pk.output.gold}}</div>
       </div>
     </div>
 
-    <hr />
+    <hr/>
 
     <h2 class="pk-section-title">Notes (Players & DM)</h2>
     <textarea
