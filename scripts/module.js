@@ -235,6 +235,7 @@ class ImprovementSheet extends ItemSheet {
   getData(options = {}) {
     const data = super.getData(options);
 
+    // Ensure this item is tagged as an improvement
     if (this.item.getFlag(PK_ID, "pkType") !== "improvement") {
       this.item.setFlag(PK_ID, "pkType", "improvement");
     }
@@ -246,6 +247,7 @@ class ImprovementSheet extends ItemSheet {
       type: "improvement",
       isGM: game.user.isGM,
       loreText: s("loreText", ""),
+
       bonus: {
         law: f("bonusLaw"),
         chaos: f("bonusChaos"),
@@ -253,12 +255,15 @@ class ImprovementSheet extends ItemSheet {
         arcana: f("bonusArcana"),
         influence: f("bonusInfluence"),
       },
+
       output: {
         food: f("outputFood"),
         gold: f("outputGold"),
       },
+
       cost: f("cost"),
       buildTime: f("buildTime"),
+
       playerNotes: s("playerNotes", ""),
     };
 

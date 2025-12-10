@@ -43,3 +43,99 @@
         rows="4"
       >{{pk.loreText}}</textarea>
     {{else}}
+      <div class="pk-lore-display">
+        {{#if pk.loreText}}
+          {{{pk.loreText}}}
+        {{else}}
+          <em>No lore has been recorded for this improvement yet.</em>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    <hr />
+
+    <h2 class="pk-section-title">Bonuses</h2>
+    <div class="grid grid-2col pk-bonus-grid">
+      <div class="form-group">
+        <label>Law</label>
+        <input
+          type="number"
+          data-pk-field="bonusLaw"
+          value="{{pk.bonus.law}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+      <div class="form-group">
+        <label>Chaos</label>
+        <input
+          type="number"
+          data-pk-field="bonusChaos"
+          value="{{pk.bonus.chaos}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Faith</label>
+        <input
+          type="number"
+          data-pk-field="bonusFaith"
+          value="{{pk.bonus.faith}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+      <div class="form-group">
+        <label>Arcana</label>
+        <input
+          type="number"
+          data-pk-field="bonusArcana"
+          value="{{pk.bonus.arcana}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+
+      <div class="form-group pk-span-2">
+        <label>Influence</label>
+        <input
+          type="number"
+          data-pk-field="bonusInfluence"
+          value="{{pk.bonus.influence}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+    </div>
+
+    <hr />
+
+    <h2 class="pk-section-title">Output</h2>
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Food</label>
+        <input
+          type="number"
+          data-pk-field="outputFood"
+          value="{{pk.output.food}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+      <div class="form-group">
+        <label>Gold</label>
+        <input
+          type="number"
+          data-pk-field="outputGold"
+          value="{{pk.output.gold}}"
+          {{#unless pk.isGM}}disabled{{/unless}}
+        />
+      </div>
+    </div>
+
+    <hr />
+
+    <h2 class="pk-section-title">Notes (Players & DM)</h2>
+    <textarea
+      data-pk-field="playerNotes"
+      class="pk-notes-text"
+      rows="5"
+    >{{pk.playerNotes}}</textarea>
+  </section>
+</form>
