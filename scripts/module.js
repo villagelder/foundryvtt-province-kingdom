@@ -228,7 +228,7 @@ class ImprovementSheet extends ItemSheet {
       classes: [PK_ID, "sheet", "item", "improvement"],
       template: `modules/${PK_ID}/templates/improvement-sheet.html`,
       width: 600,
-      height: 650
+      height: 650,
     });
   }
 
@@ -243,20 +243,22 @@ class ImprovementSheet extends ItemSheet {
     const f = (key, def = 0) => this.item.getFlag(PK_ID, key) ?? def;
     const s = (key, def = "") => this.item.getFlag(PK_ID, key) ?? def;
 
-    const fmt = (n) => {
+    const fmtSigned = (n) => {
       const num = Number(n) || 0;
-      return num > -1 ? `+${num}` : `${num}`;
+      return num >= 0 ? `+${num}` : `${num}`;
     };
 
-    const cost      = f("cost");
+    const fmtPlain = (n) => `${Number(n) || 0}`;
+
+    const cost = f("cost");
     const buildTime = f("buildTime");
-    const bonusLaw        = f("bonusLaw");
-    const bonusChaos      = f("bonusChaos");
-    const bonusFaith      = f("bonusFaith");
-    const bonusArcana     = f("bonusArcana");
-    const bonusInfluence  = f("bonusInfluence");
-    const outputFood      = f("outputFood");
-    const outputGold      = f("outputGold");
+    const bonusLaw = f("bonusLaw");
+    const bonusChaos = f("bonusChaos");
+    const bonusFaith = f("bonusFaith");
+    const bonusArcana = f("bonusArcana");
+    const bonusInfluence = f("bonusInfluence");
+    const outputFood = f("outputFood");
+    const outputGold = f("outputGold");
 
     data.pk = {
       isGM: game.user.isGM,
@@ -268,30 +270,30 @@ class ImprovementSheet extends ItemSheet {
         chaos: f("bonusChaos"),
         faith: f("bonusFaith"),
         arcana: f("bonusArcana"),
-        influence: f("bonusInfluence")
+        influence: f("bonusInfluence"),
       },
 
       output: {
         food: f("outputFood"),
-        gold: f("outputGold")
+        gold: f("outputGold"),
       },
 
       cost: f("cost"),
       buildTime: f("buildTime"),
 
       display: {
-        cost:       fmt(cost),
-        buildTime:  fmt(buildTime),
-        bonusLaw:       fmt(bonusLaw),
-        bonusChaos:     fmt(bonusChaos),
-        bonusFaith:     fmt(bonusFaith),
-        bonusArcana:    fmt(bonusArcana),
-        bonusInfluence: fmt(bonusInfluence),
-        outputFood:     fmt(outputFood),
-        outputGold:     fmt(outputGold)
+        cost: `${fmtPlain(f("costGB"))} GB`,
+        buildTime: fmtPlain(buildTime),
+        bonusLaw: fmtSigned(bonusLaw),
+        bonusChaos: fmtSigned(bonusChaos),
+        bonusFaith: fmtSigned(bonusFaith),
+        bonusArcana: fmtSigned(bonusArcana),
+        bonusInfluence: fmtSigned(bonusInfluence),
+        outputFood: fmtSigned(outputFood),
+        outputGold: fmtSigned(outputGold),
       },
 
-      playerNotes: s("playerNotes")
+      playerNotes: s("playerNotes"),
     };
 
     return data;
